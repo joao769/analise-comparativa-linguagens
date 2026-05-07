@@ -1,13 +1,16 @@
-def fibonacci_iterativo(n):
+import time
+
+def fib_i(n):
     a, b = 0, 1
-    for _ in range(n):
-        a, b = b, a + b
+    for _ in range(n): a, b = b, a + b
     return a
 
-def fibonacci_recursivo(n):
-    if n <= 1:
-        return n
-    return fibonacci_recursivo(n - 1) + fibonacci_recursivo(n - 2)
+def fib_r(n):
+    if n <= 1: return n
+    return fib_r(n - 1) + fib_r(n - 2)
 
-print(f"Iterativo: {fibonacci_iterativo(10)}")
-print(f"Recursivo: {fibonacci_recursivo(10)}")
+n = 30
+s = time.perf_counter(); fib_i(n); e = time.perf_counter()
+print(f"Python Iterativo: {(e - s) * 1000:.4f} ms")
+s = time.perf_counter(); fib_r(n); e = time.perf_counter()
+print(f"Python Recursivo: {(e - s) * 1000:.4f} ms")

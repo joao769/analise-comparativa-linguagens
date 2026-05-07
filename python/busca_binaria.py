@@ -1,11 +1,14 @@
-def busca_binaria(arr, alvo):
-    baixo, alto = 0, len(arr) - 1
-    while baixo <= alto:
-        meio = (baixo + alto) // 2
-        if arr[meio] == alvo: return meio
-        if arr[meio] < alvo: baixo = meio + 1
-        else: alto = meio - 1
+import time
+
+def busca(arr, alvo):
+    b, a = 0, len(arr) - 1
+    while b <= a:
+        m = (b + a) // 2
+        if arr[m] == alvo: return m
+        if arr[m] < alvo: b = m + 1
+        else: a = m - 1
     return -1
 
-lista = [10, 20, 30, 40, 50]
-print(f"Indice: {busca_binaria(lista, 30)}")
+lista = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+s = time.perf_counter(); busca(lista, 70); e = time.perf_counter()
+print(f"Python Busca: {(e - s) * 1000:.4f} ms")
